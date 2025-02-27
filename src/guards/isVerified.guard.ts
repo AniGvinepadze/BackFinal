@@ -7,7 +7,6 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
-import { ApiGatewayTimeoutResponse } from '@nestjs/swagger';
 import { error } from 'console';
 import { Model } from 'mongoose';
 import { Company } from 'src/company/schema/company.schema';

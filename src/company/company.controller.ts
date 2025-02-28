@@ -53,7 +53,7 @@ export class CompanyController {
   @Get('billing-info')
  async currentMothBilling(@Company() companyId, @Employees () employeeId){
     const file = await this.fileModel.find()
-    console.log(file)
+    console.log(companyId,"com panuyId")
    return this.companyService.currentMonthBilling(companyId,employeeId,file)
   }
 

@@ -1,4 +1,5 @@
-import { IsEmail, IsNotEmpty, IsString, Length } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsString, Length } from 'class-validator';
+import { Subscription } from 'src/enums/subscription.enum';
 
 export class SignUpDto {
   @IsNotEmpty()
@@ -21,4 +22,7 @@ export class SignUpDto {
   @IsNotEmpty()
   @IsString()
   industry: string;
+
+  @IsEnum(Subscription)
+  subscriptionPlan: Subscription; 
 }

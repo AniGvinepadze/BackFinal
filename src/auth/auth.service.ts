@@ -16,8 +16,11 @@ export class AuthService {
     private emailSender: EmailSenderService,
   ) {}
 
-  async signUp({ companyName, country, email, industry, password }: SignUpDto,employeeId:string) {
-   console.log(employeeId,"emplyeeIdInSIgnUp") 
+  async signUp(
+    { companyName, country, email, industry, password ,subscriptionPlan}: SignUpDto,
+    employeeId: string,
+  ) {
+    console.log(employeeId, 'emplyeeIdInSIgnUp');
     const existCompany = await this.companyModel.findOne({ email });
     if (existCompany) throw new BadRequestException('company already exist');
 
@@ -34,6 +37,7 @@ export class AuthService {
       industry,
       employeeId,
       password: hashedPassword,
+      subscriptionPlan,
       otpCode,
       otpCodeValidateDate,
     });
@@ -114,7 +118,7 @@ export class AuthService {
       companyId: existCompany._id,
       role: existCompany.role,
       subscription: existCompany.subscriptionPlan,
-      file:existCompany.file
+      file: existCompany.file,
     };
 
     const accessToken = await this.jwtService.sign(payLoad, {

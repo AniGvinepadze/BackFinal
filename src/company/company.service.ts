@@ -204,7 +204,8 @@ export class CompanyService {
 
   async currentMonthBilling(companyId: string, employeeId: string, file) {
     const company = await this.companyModel.findById(companyId);
-
+    console.log(company.subscriptionPlan,"companyId subscription")
+   console.log("shemovida")
     if (company.subscriptionPlan === Subscription.BASIC) {
       const extraEmployees = company.employee.length - 10 + 1;
       const cost = 0;

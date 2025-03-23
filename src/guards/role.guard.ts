@@ -20,7 +20,7 @@ import {
   
         const payLoad = await this.jwtService.verify(token);
         request.role = payLoad.role;
-   
+        
   
         return true;
       } catch (error) {
